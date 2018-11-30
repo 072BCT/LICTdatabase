@@ -1,0 +1,42 @@
+﻿@model LICTProject.Models.ProjectMember
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<link rel="stylesheet" href="~/bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+
+<!-- Theme style -->
+@*<link rel="stylesheet" href="~/dist/css/AdminLTE.min.css">*@
+<!--For Datatables-->
+<link href="~/bower_components/datatables.net-bs/css/select.datatable.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+<div>
+    <h4>ProjectMember</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Personnel.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Personnel.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.Project_Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.Project_Title)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProjectMembersID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

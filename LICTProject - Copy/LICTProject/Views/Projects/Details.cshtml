@@ -1,0 +1,172 @@
+﻿@model LICTProject.Models.Project
+
+@{
+    ViewBag.Title = "Details";
+    if (Request.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+
+}
+
+<link rel="stylesheet" href="~/bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+
+<!-- Theme style -->
+@*<link rel="stylesheet" href="~/dist/css/AdminLTE.min.css">*@
+<!--For Datatables-->
+<link href="~/bower_components/datatables.net-bs/css/select.datatable.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+
+<h1 style="font-family:Serif"> @Html.DisplayFor(model => model.Project_Title)</h1>
+
+<div class="box box-danger">
+    <div class="box-body bg-gray">
+        <div class="box-header" style="margin-top:0px">
+            <p class="box-header" style="text-align: center; font-size:x-large; font-weight:bolder "><b>DETAILS</b></p>
+        </div>
+        <div class="col-md-12">
+            <label class="col-md-offset-5" style="font-size:large; font-family:'Bodoni MT'"> @Html.DisplayNameFor(model => model.StartTime): </label>
+            <label style="font-size:large; font-family:'Bodoni MT'; text-indent:60px"> @Html.DisplayFor(model => model.StartTime) </label>
+        </div>
+
+        <div class="col-md-12">
+            <label class="col-md-offset-5" style="font-size:large; font-family:'Bodoni MT'"> @Html.DisplayNameFor(model => model.EndTime): </label>
+            <label style="font-size:large; font-family:'Bodoni MT'; text-indent:65px"> @Html.DisplayFor(model => model.EndTime) </label>
+        </div>
+
+
+        <div class="col-md-12">
+            <label class="col-md-offset-5" style="font-size:large; font-family:'Bodoni MT'"> @Html.DisplayNameFor(model => model.GrantProvider): </label>
+            <label style="font-size:large; font-family:'Bodoni MT'; text-indent:30px"> @Html.DisplayFor(model => model.GrantProvider) </label>
+        </div>
+
+        <div class="col-md-12">
+            <label class="col-md-offset-5" style="font-size:large; font-family:'Bodoni MT'"> @Html.DisplayNameFor(model => model.GrantAmt): </label>
+            <label style="font-size:large; font-family:'Bodoni MT'; text-indent:60px"> @Html.DisplayFor(model => model.GrantAmt)$ </label>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="box box-danger">
+                    <div class="box-body">
+                        <table id="example1" class="row-border hover order-column">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Project Members:
+                                    </th>
+
+                                </tr>
+                            </thead>
+
+                            @foreach (var item in Model.ProjectMembers)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href=" @Url.Action("Details", "Personnels", new { id = item.PersonnelID }) ">  @Html.DisplayFor(modelItem => item.Personnel.FullName)</a>
+                                      
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+
+                <div class="box box-danger">
+                    <div class="box-body">
+                        <table id="example2" class="row-border hover order-column">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Other Members:
+                                    </th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in Model.OtherMembers)
+                            {
+                                <tr>
+                                    <td>
+                                       
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div class="box box-danger">
+    <div class="box-body bg-gray">
+        <div class="box-header" style="margin-top:0px">
+            <p class="box-header" style="text-align: center; font-size:x-large; font-weight:bolder "><b>Description</b></p>
+        </div>
+        <label style="font-size:large; font-weight:normal; font-family:'Times New Roman'; text-align:justify"> @Html.DisplayFor(model => model.Describe) </label>
+
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProjectID }) |
+    @Html.ActionLink("Back to List", "Index")
+
+</p>
+
+@section scripts{
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+
+    <!-- DataTables -->
+    <script src="/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+    <!-- AdminLTE for demo purposes -->
+    <script src="/dist/js/demo.js"></script>
+    <!-- page script -->
+    <script>
+        $(function () {
+            var table = $('#example1').DataTable();
+            var table = $('#example2').DataTable();
+            //$('#example2').DataTable({
+            //    'paging': true,
+            //    'lengthChange': false,
+            //    'searching': false,
+            //    'ordering': true,
+            //    'info': true,
+            //    'autoWidth': false
+            //})
+
+
+
+            $('#example tbody').on('click', 'tr', function () {
+                $(this).toggleClass('selected');
+            });
+
+            $('#example tbody').on('click', 'tr', function () {
+                var data = table.row(this).data();
+                alert('You clicked on ' + data[0] + '\'s row');
+            });
+
+        })
+    </script>
+
+
+}
+
+

@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <script src="~/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="~/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- bootstrap datepicker -->
+    <script src="~/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/gif/jpg" href="~/Content/images/lab-logos.jpg">
+    <title>Laboratory For ICT Research and Development</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="~/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="~/bower_components/Ionicons/css/ionicons.min.css">
+
+    <!--DatetimePicker-->
+    <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="~/dist/css/skins/_all-skins.min.css">
+
+    <!--For Datatables-->
+    <link href="~/bower_components/datatables.net-bs/css/select.datatable.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue fixed sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>A</b>PL</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Admin</b>PANEL</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" >
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="hidden-xs">Admin</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+
+                                    <p>
+                                        Admin-LICT Site
+                                        <small>LICT</small>
+                                    </p>
+                                </li>
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        @if (Request.IsAuthenticated)
+                                        {
+                                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-default btn-flat">Logoff</a>
+                                            }
+
+                                        }
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+               
+
+            </nav>
+
+        </header>
+
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar" >
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="image">
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <img src="~/dist/img/lab-logo.ico" style="max-height:130px; max-width:150px;" />
+                    </div>
+
+                </div>
+                <!-- search form -->
+                <form action="#" method="get" class="sidebar-form"></form>
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-users"></i> <span>Personnel</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Index","Personnels")"><i class="fa fa-info-circle"></i>Index</a></li>
+                            <li><a href="@Url.Action("Create","Personnels")"><i class="fa fa-plus-circle"></i>Add</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-laptop"></i> <span>Project</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Index", "Projects")"><i class="fa fa-plus-circle"></i> Index</a></li>
+                            <li><a href="@Url.Action("Create","Projects")"><i class="fa fa-edit"></i>Add</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="@Url.Action("ChangePassword", "Manage")"><i class="fa fa-user-secret"></i> <span>Other Members</span></a></li>
+
+                    <li><a href="@Url.Action("ChangePassword", "Manage")"><i class="fa fa-user"></i> <span>Account</span></a></li>
+                    <li><a href="#"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+                    <li class="header">LABELS</li>
+                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+      
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+
+            <section class="fixed">
+                <div class="box box-primary ">
+                    <div class="box box-body bg-gray">
+                        <center>
+                            <font style="text-align:center" size="+2" color="#660033" face="Times New Roman"><b>Laboratory for ICT Research and Development</b></font><br />
+                            <font size="+1" face="Times New Roman">
+                                <b> Institute of Engineering,Tribhuvan University</b><br />
+                            </font> <b><i>http://lict.ioe.edu.np</i></b>
+
+                        </center>
+
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                @RenderBody()
+                <!-- /.box -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <link href="~/Content/cssMain.css" rel="stylesheet" type="text/css" />
+        <footer class="main-footer">
+            <table style=" width:90%" align="center" ;>
+                <tbody>
+                    <tr><td colspan="3"><hr></td></tr>
+                    <tr>
+                        <td width="10%"><img src="~/Content/images/ioeLogo.jpg" width="96" height="95" align="left"></td>
+                        <td align="left" valign="middle"> <div align="left"><font size="+2"><b>Institute of Engineering(IOE),Tribhuvan University, Nepal</b></font></div></td>
+                        <td align="right" valign="top">&nbsp; <a href="https://www.facebook.com/LICTLAB/" target="_blank"><img src="~/Content/images/facebook.ico" height="25"></a> &nbsp;<a href="https://twitter.com/lict_ioe" target="_blank"><img src="~/Content/images/twr.ico" height="25"></a>&nbsp; <a href="https://www.youtube.com/playlist?list=PLylVKBSqL0jDt6AXQA1WYfE2QAkaC54D7" target="_blank"><img src="~/Content/images/youTube.ico" height="25"></a></td>
+                    </tr>
+                    <tr height="30" valign="middle">
+                        <td colspan="3" bgcolor="#FFE3D7" align="center" valign="middle">
+                            <div align="center">
+                                © 2016, Laboratory for ICT Research and Development (#lict) <br>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </footer>
+
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery 3 -->
+    @RenderSection("scripts", required: false)
+
+   
+    <!-- SlimScroll -->
+    <script src="~/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/dist/js/demo.js"></script>
+    <!--For Datatables-->
+    <script src="~/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.sidebar-menu').tree()
+        })</script>
+</body>
+</html>

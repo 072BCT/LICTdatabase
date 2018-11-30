@@ -1,0 +1,127 @@
+﻿@model IEnumerable<LICTProject.Models.Personnel>
+
+@{
+
+    ViewBag.Title = "UserView";
+}
+<link rel="stylesheet" href="~/bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+<!--For Datatables-->
+<link href="~/bower_components/datatables.net-bs/css/select.datatable.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+<p class="box-header" style="text-align: center; font-family:serif; font-size:xx-large; font-weight:bolder "><b>LIST OF PERSONNELS</b></p>
+<div>
+    <table id="example1" class="row-border hover order-column" align="center">
+        <thead>
+            <tr>
+
+                <th>
+
+                </th>
+
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <div class="container">
+                        <div class="row">
+                            <div class="card col-xs-12 col-sm-8 col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        @if (item.Image != null)
+                                        {
+                                            var base64 = Convert.ToBase64String(item.Image);
+                                            var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                            <img src='@imgsrc' style="max-width:250px;max-height:250px" />
+
+                                        }
+                                        else
+                                        {
+                                            <img src='~/Content/images/avatar-default.jpg' style="max-width:250px;max-height:250px" />
+                                        }
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card-body">
+                                            <h3 class="card-title" style=" font-family:serif">
+                                                <p style="display:none"> @Html.DisplayFor(modelItem => item.LICT_Title1.Id)</p>
+                                                @Html.DisplayFor(modelItem => item.LICT_Title1.Title)<br />
+                                                <a href="@Url.Action("Details", "Personnels", new { id = item.PersonnelID })"> @Html.DisplayFor(modelItem => item.FullName)</a>
+                                            </h3>
+
+
+
+                                            <p>
+                                                @Html.DisplayNameFor(model => model.PostAtIOE):
+                                                @Html.DisplayFor(modelItem => item.PostAtIOE)
+                                            </p>
+                                            <p>
+                                                @Html.DisplayNameFor(model => model.Email):
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </p>
+                                            <p>
+                                                @Html.DisplayFor(modelItem => item.PhoneNo)
+                                            </p>
+                                            <p>
+                                                <a href="http://@Html.DisplayFor(modelItem => item.Urls)" style="font-size:large; font-family:'Bodoni MT';"> @Html.DisplayFor(modelItem => item.Urls) </a>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+
+
+            </tr>
+
+        }
+
+
+
+
+    </table>
+</div>
+
+
+
+@section scripts{
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+
+    <!-- DataTables -->
+    <script src="/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+    <!-- AdminLTE for demo purposes -->
+    <script src="/dist/js/demo.js"></script>
+    <!-- page script -->
+    <script>
+        $(function () {
+            var table = $('#example1').DataTable({
+
+                fixedHeader: {
+                    header: true,
+                    footer: true
+                }
+            });
+        })
+        $('#example tbody').on('click', 'tr', function () {
+            $(this).toggleClass('selected');
+        });
+
+        $('#example tbody').on('click', 'tr', function () {
+            var data = table.row(this).data();
+            alert('You clicked on ' + data[0] + '\'s row');
+        });
+
+    </script>
+
+
+}
+

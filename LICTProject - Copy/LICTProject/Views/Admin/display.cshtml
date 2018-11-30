@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "GetEmpChart";
+}
+
+<h2>GetEmpChart</h2>
+<div id="empChart"></div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+    google.load("visualization", "1", { packages: ["orgchart"] });
+
+    $(function () {
+        var events = [];
+        $.ajax({
+            type: "GET",
+            url: "/Admin/GetEmpChart",
+            success: function (data) {
+
+                var chartData = new google.visualization.DataTable();
+
+                chartData.addColumn('string', 'Name');
+                chartData.addColumn('string', 'Manager');
+                chartData.addColumn('string', 'ToolTip');
+
+
+                $.each(data, function (index, row) {
+                    var reportID = row.LICT_Title.toString() == "0" ? '' : row.LICT_Title.toString();
+
+                    chartData.addRows([[{
+                        v: row.PersonnelID.toString(),
+                        f: row.FullName  // + '<div>(<span>' + row.Designation + '</span>)</div><img height="50px" width="50px" src = "Photos/' + row.Id.toString() + '.jpg" />'
+                    }, reportID,]]);
+                });
+                var chart = new google.visualization.OrgChart($("#empChart")[0]);
+                chart.draw(chartData, { allowHtml: true });
+
+            },
+
+            failure: function (xhr, status, error) {
+                alert("Failure: " + xhr.responseText);
+            },
+            error: function (xhr, status, error) {
+                alert("Error: " + xhr.responseText);
+            }
+        });
+    }
+</script>
+

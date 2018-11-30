@@ -1,0 +1,133 @@
+﻿
+<table width="90%" align="center">
+    <tr>
+        <td>
+            <div id='contentPage'>
+                <!-- dynamic content page here -->
+                <style>
+                    .myself {
+                        margin: 10px 0;
+                    }
+
+                    .myself-block {
+                        float: left;
+                        width: 25%;
+                        padding-left: 10px;
+                        padding-bottom: 10px;
+                    }
+
+                    .myself-title {
+                        font-family: Verdana, Tahoma, Arial, Serif;
+                        background-color: #1162c5;
+                        color: white;
+                        padding: 4px;
+                        border: solid 1px #2e3d7a;
+                        border-top-left-radius: 3px;
+                        border-top-right-radius: 6px;
+                        font-weight: bold;
+                    }
+
+                    .myself-name {
+                        font-family: Myriad Web Pro;
+                        font-size: 11pt;
+                        line-height: 30px;
+                        padding: 0 10px;
+                    }
+                </style>
+
+                <table width="100%" cellpadding="10">
+                    <tr>
+                        <td width="75%" align="left" valign="top">
+                            <head>
+                                <meta name="viewport" content="width=device-width, initial-scale=1">
+                                <style>
+                                    .mySlides {
+                                        display: none;
+                                    }
+                                </style>
+                                <body>
+
+                                    <div style="max-width:100%" align="center">
+                                        <img class="mySlides" src="~/Content/slideImages/image-slider-1.jpg" align="center" alt="Welcome Laboratory for ICT Research and Development" width="90%" height="350" />
+                                        <img class="mySlides" src="~/Content/slideImages/image-slider-2.jpg" align="center" alt="Welcome Laboratory for ICT Research and Development" width="90%" height="350" />
+                                        <img class="mySlides" src="~/Content/slideImages/image-slider-3.jpg" align="center" alt="Welcome Laboratory for ICT Research and Development" width="90%" height="350" />
+                                        <img class="mySlides" src="~/Content/slideImages/image-slider-4.jpg" align="center" alt="Welcome Laboratory for ICT Research and Development" width="90%" height="350" />
+                                        <img class="mySlides" src="~/Content/slideImages/image-slider-5.jpg" align="center" alt="Welcome Laboratory for ICT Research and Development" width="90%" height="350" />
+                                        <img class="mySlides" src="~/Content/slideImages/image-slider-6.jpg" align="center" alt="Welcome Laboratory for ICT Research and Development" width="90%" height="350" />
+                                        <img class="mySlides" src="~/Content/slideImages/image-slider-1.jpg" align="center" alt="Welcome Laboratory for ICT Research and Development" width="90%" height="350" />
+                                        <img class="mySlides" src="~/Content/slideImages/image-slider-2.jpg" align="center" alt="Welcome Laboratory for ICT Research and Development" width="90%" height="350" />
+                                        <img class="mySlides" src="~/Content/slideImages/image-slider-3.jpg" align="center" alt="Welcome Laboratory for ICT Research and Development" width="90%" height="350" />
+                                        <img class="mySlides" src="~/Content/slideImages/image-slider-4.jpg" align="center" alt="Welcome Laboratory for ICT Research and Development" width="90%" height="350" />
+                                    </div>
+
+                                    <script>
+                                        var myIndex = 0;
+                                        carousel();
+
+                                        function carousel() {
+                                            var i;
+                                            var x = document.getElementsByClassName("mySlides");
+                                            for (i = 0; i < x.length; i++) {
+                                                x[i].style.display = "none";
+                                            }
+                                            myIndex++;
+                                            if (myIndex > x.length) { myIndex = 1 }
+                                            x[myIndex - 1].style.display = "block";
+                                            setTimeout(carousel, 6000); // Change image every 2 seconds
+                                        }
+                                    </script>
+                            </head>
+                            </body>
+                            <p align="justify">
+                                <b>Laboratory for ICT Research and Development</b> is the laboratory established on 1st January,2017 at Institute of Engineering, Tribhuvan University, Nepal with the vision to have world class reserach on Information and Communication Technology.
+                            </p> This research lab is mission to carry out the widely focused research and innovation on modern technologies like:
+                            <li> New Network Technologies: NGN, Software Defined Network, IPv6</li>
+                            <li> Wireless Communications, WSN, IoT</li>
+                            <li> Cloud Computing and Virtualization, FOG computing, Big Data</li>
+                            <li> Machine Learning, Natuarl Language Processing, Image Processing & AI</li>
+                            <li> Software Engineering & Information Systems</li>
+                            <li> Research projects on any ICT related fields.</li>
+                        </td>
+
+                        <td width="25%" valign="top">
+                            <div align="center">
+                                <div align="left" id="deanMSG" style="border-bottom-width:thick;border-bottom-color:#CCCCCC">
+                                    <div class="myself-title" align="left">Dean's Message</div>
+                                    <div>
+                                        <p align="justify">
+                                            <img src="~/Content/images/deanIOE.jpg" alt="Smiley face" width="50" height="60" align="left"> This is my great pleasure to establish the ICT research and development laboratory at our institute. The socio-economic development of the country starts with the level of excellency in its education system. <br />
+
+                                            <a href="javascript:openPopUP('deanMSG.php')">Read More..&raquo;</a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="myself-title" align="right">Chairman's Message</div>
+                                <div>
+                                    <p align="justify">
+                                        <img src="~/Content/images//lictChairman.jpg" alt="Smiley face" width="50" height="60" align="right"> This is my pleasure to announce researchers at IOE and outside that we are running the research lab <b>viz: Laboratory for ICT Research and Development (LICT)</b> with the objective to enhance ICT sectors of Nepal and the worldwide through university research and development. <br />
+                                        <a href="javascript:openPopUP('chairmanMSG.php')">Read More..&raquo;</a>
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <a class="twitter-timeline" data-width="300" data-height="300" data-link-color="#19CF86" href="https://twitter.com/lict_ioe?ref_src=twsrc%5Etfw">Tweets by lict_ioe</a>
+                                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <hr />
+                            <strong>Joint Conference/Workshop:</strong><br />
+                            1. 1st TU-NUAA Joint Academic Workshop, 15-17th Jan, 2017 <a href="http://lict.ioe.edu.np/ConfShop/TU-NUAA-WorkshopProgramTentative.pdf" target="_blank"> Click Here</a><br />
+                            2. International Workshop on Data Analytics and Machine Intelligence-DAMI'17, 11-13th Dec. 2017<a href="http://www.sau.ac.in/~dami17/index.php" target="_blank"> Click Here</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
+

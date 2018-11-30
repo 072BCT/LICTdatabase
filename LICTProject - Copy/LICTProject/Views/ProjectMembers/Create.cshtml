@@ -1,0 +1,67 @@
+﻿@model LICTProject.Models.ProjectMember
+
+
+<link href="~/Content/chosen.css" rel="stylesheet" />
+
+<script src="//cdn.jsdelivr.net/chosen/1.1.0/chosen.jquery.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>ProjectMember</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProjectID, "ProjectID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ProjectID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProjectID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PersonnelID, "PersonnelID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownList("PersonnelID", null, htmlAttributes: new { @class = "form-control chosen-select", @multiple = true, })
+                @Html.ValidationMessageFor(model => model.PersonnelID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div id="dicCont">
+                <div> @Html.DropDownList("PersonnelID", null, htmlAttributes: new { @class = "form-control" }) <input type="button" onclick="AddTextBox()" value="Add New" /></div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script>
+    function GetDynamicTextBox(value) {
+        return '<div>@@Html.DropDownList("PersonnelID", null, htmlAttributes: new { @@class = "form-control" })<input type="button" onclick="RemoveTextBox(this)" value="Remove" /></div>'
+    }
+    function AddTextBox() {
+        var div = document.createElement('DIV');
+        div.innerHTML = GetDynamicTextBox(" ");
+        document.getElementById("dicCont").appendChild(div);
+
+    }
+    function RemoveTextBox(div) {
+        document.getElementById("dicCont").removeChild(div.parentNode.parentNode);
+
+    }
+    $('.chosen-select').chosen()
+
+
+</script>

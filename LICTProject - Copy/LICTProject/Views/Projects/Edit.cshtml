@@ -1,0 +1,294 @@
+﻿@model LICTProject.Models.Project
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/Content/chosen.css" rel="stylesheet" />
+<script src="//cdn.jsdelivr.net/chosen/1.1.0/chosen.jquery.js"></script>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ProjectID)
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-horizontal">
+                    <div class="box box-danger bg-gray">
+                        <div class="box-body">
+                            <div class="form-group has-feedback">
+                                @Html.LabelFor(model => model.Project_Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-8 input-group">
+
+                                    @Html.EditorFor(model => model.Project_Title, new { htmlAttributes = new { @class = "form-control", @placeholder = "Title", @autocomplete = "off" } })
+                                    @Html.ValidationMessageFor(model => model.Project_Title, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group has-feedback">
+                                @Html.LabelFor(model => model.UniqueId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-8 input-group">
+                                    <div class="input-group-addon ">
+                                        <i class="fa fa-id-card"></i>
+                                    </div>
+                                    @Html.EditorFor(model => model.UniqueId, new { htmlAttributes = new { @class = "form-control", @id = "UniqueId" } })
+                                    @Html.ValidationMessageFor(model => model.UniqueId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+                            @*<div class="form-group">
+                                    @Html.LabelFor(model => model.Duration, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Duration, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>*@
+
+
+                            <div class="form-group has-feedback">
+                                @Html.LabelFor(model => model.GrantProvider, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-8 input-group">
+                                    <div class="input-group-addon ">
+                                        <i class="fa fa-life-saver"></i>
+                                    </div>
+
+                                    @Html.EditorFor(model => model.GrantProvider, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+                                    @Html.ValidationMessageFor(model => model.GrantProvider, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group has-feedback">
+                                @Html.LabelFor(model => model.GrantAmt, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-8 input-group">
+                                    <div class="input-group-addon ">
+                                        <i class="fa fa-dollar"></i>
+                                    </div>
+                                    @Html.EditorFor(model => model.GrantAmt, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.GrantAmt, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="box box-danger">
+                    <div class="box-body bg-gray">
+                        <div class="box-header" style="margin-top:0px">
+                            <p class="box-header" style="text-align: center; font-size:x-large; font-weight:bolder "><b>DESCRIPTION</b></p>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <div class="col-md-12">
+                                @Html.TextAreaFor(model => model.Describe, 10, 100, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter...", @autocomplete = "off" } })
+                                @Html.ValidationMessageFor(model => model.Describe, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box box-danger bg-gray">
+                    <div class="box-body">
+
+                        <div class="form-group has-feedback">
+                            <label class="col-md-offset-2 ">Start Time</label>
+                            <div class=" col-md-offset-2 col-md-8 input-group ">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control", @id = "StartTime", @autocomplete = "off" } })
+                                @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group has-feedback">
+                            <label class="col-md-offset-2 ">Completion Time</label>
+                            <div class="col-md-offset-2 col-md-8 input-group date">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control pull-right", @id = "EndTime", @autocomplete = "off" } })
+                                @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="box box-danger bg-gray">
+                    <div class="box-body">
+                        <div>
+                            <label class="col-md-offset-2 ">Project Members</label>
+                            <div class="col-md-12 input-group">
+                                <div class="input-group-addon bg-gray">
+                                    <i class="fa fa-user">  @Html.DropDownList("PersonnelID", null, htmlAttributes: new { @class = "form-control chosen-container", @multiple = true, @id = "DropDown" })</i>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <br />
+
+                        <div>
+                            <label class="col-md-offset-2">Other Members </label>
+                            <div class="col-md-12 input-group">
+                                <div class="input-group-addon bg-gray">
+
+                                    <div id="dicCont">
+
+                                        <i class="fa fa-user">
+                                            <input type="text" id="id0" autocomplete="off" style="font-size:18px; font-family:'Bodoni MT'" /><br />
+                                            <input type="button" onclick="AddTextBox()" value="Add New" />
+                                        </i>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="box box-danger ">
+        <div class="col-sm-offset-5">
+            <div class="box-body">
+                <i class="fa fa-save">
+                    <input type="submit" id="btn_submit" value="Create" style="font-size:large; color:Black;font-weight:bolder;background-color:aqua; font-family:Ebrima;" class="btn btn-app" />
+                </i>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+}
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script>
+    function GetDynamicTextBox(value) {
+        return '<br/><i class= "fa fa-user"><input type="text"id="id' + value + '" autocomplete="off" style="font-size:18px; font-family: \'BodoniMT\'"/><br/><input type="button" onclick="RemoveTextBox(this)" value="Remove" /></i>'
+
+    }
+    var count = 0;
+    function AddTextBox() {
+        count++;
+        var div = document.createElement('DIV');
+        div.innerHTML = GetDynamicTextBox(count);
+        document.getElementById("dicCont").appendChild(div);
+
+    }
+    function RemoveTextBox(div) {
+        count--;
+        document.getElementById("dicCont").removeChild(div.parentNode.parentNode);
+
+    }
+
+
+
+
+
+    //$('.chosen-container').chosen()
+    $("#DropDown").chosen();
+    var selected = $("#DropDown").val();
+    var getReportColumnsParams
+
+    $("#btn_submit").click(function () {
+        var selectedValues = {};
+        var selectedList = [];
+
+        var getUniqueValue = $("#UniqueId").val();
+        var q = $("#DropDown").val();
+
+        q.forEach(function (item) {
+            selectedValues["PersonnelID"] = item;
+            selectedValues["ProjectID"] = getUniqueValue
+            selectedList.push(selectedValues);
+
+            getReportColumnsParams = {
+                "ProjectMemberJSON": JSON.stringify(selectedList)
+            };
+            $.ajax({
+                type: "POST",
+                traditional: true,
+                url: "/Projects/SetProjectMember",
+                datatype: "json",
+                data: getReportColumnsParams,
+                success: function (result) {
+                    alert(result);
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText);
+
+                    alert("Error occurred...");
+                }
+            });
+            console.log(getReportColumnsParams);
+            selectedList.pop(selectedValues);
+        })
+
+
+        var EnteredValues = {};
+        var EnteredList = [];
+
+
+        for (i = 0; i <= count; i++) {
+            EnteredValues["OtherMember"] = $("#id" + i).val();
+            EnteredValues["ProjectID"] = getUniqueValue
+            EnteredList.push(EnteredValues);
+
+            getReportColumnsParams = {
+                "OtherMemberJSON": JSON.stringify(EnteredList)
+            };
+            $.ajax({
+                type: "POST",
+                traditional: true,
+                url: "/Projects/SetOtherMembers",
+                datatype: "json",
+                data: getReportColumnsParams,
+                success: function (result) {
+                    alert(result);
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText);
+
+                    alert("Error occurred...");
+                }
+            });
+            console.log(getReportColumnsParams);
+            selectedList.pop(EnteredValues);
+        }
+
+    });
+
+    //Date picker
+    //$('#StartTime').datepicker({
+    //    autoclose: true
+    //})
+    //$('#EndTime').datepicker({
+    //    autoclose: true
+    //})
+
+
+
+</script>

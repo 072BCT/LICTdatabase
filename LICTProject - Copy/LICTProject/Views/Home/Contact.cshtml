@@ -1,0 +1,73 @@
+﻿<table width="90%" align="center">
+    <tbody>
+        <tr>
+            <td>
+                <div id="contentPage">
+                    <script src="http://code.jquery.com/jquery-latest.js"></script>
+                    <script language="javascript">
+
+                        function submitMSG() {
+                            var yesno = prompt("Please Type OK", "Avoid Spam");
+
+                            if (yesno == "OK") {
+                                var cName = $("#cName").val();
+                                var cContact = $("#cContact").val();
+                                var fmsg = $("#fmsg").val();
+                                $.post("getFeedback.php", { cName: cName, cContact: cContact, fmsg: fmsg }, function (data) {
+                                    $('#getMsg').html(data);
+                                });
+                            }
+                            else {
+                                var htmlData = '<font color="RED"><b>Your Message couldnot received...Type OK correctly </b></font>';
+                                $('#getMsg').html(htmlData);
+                            }
+                        }
+
+                    </script>
+
+                    <form name="lictContact">
+                        <table width="60%" align="">
+                            <tbody>
+                                <tr>
+                                    <td colspan="2">
+                                        <p>
+                                            <b>&nbsp;Our Address:</b> <br>&nbsp;Information and Communication Technology Center (ICTC)<br>
+                                            &nbsp;Institute of Engineering, Pulchowk,<br>
+                                            &nbsp;Lalitpur Nepal<br>
+                                            &nbsp;Tel. +977-1-5524749              <br>
+                                            &nbsp;lict@ioe.edu.np<br />
+                                            
+                                        </p>
+                                    </td>
+                                    <td rowspan="7">
+                                        <div align="center">
+                                            <img src="~/Content/images/ictc.jpg" width="444" height="312"><br>
+                                            Information and Communication Technology Center (ICTC)
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="14%">&nbsp;</td>
+                                    <td width="85%"><strong>Please Submit Your Feedback/Message</strong> </td>
+                                </tr>
+                                <tr>
+                                    <td align="right">Your Name:</td>
+                                    <td>
+                                        <input name="cName" id="cName" type="text" size="30">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right">e-Mail: </td>
+                                    <td><input name="cContact" id="cContact" type="text" size="30"></td>
+                                </tr>
+                                <tr><td align="right">Feedback/Message:</td> <td><textarea name="fmsg" id="fmsg" cols="47" rows="5"></textarea></td></tr>
+                                <tr>  <td>&nbsp;</td><td><input type="button" value="Submit Your Message" onclick="submitMSG()"> </td>  </tr>
+                                <tr><td colspan="2"> <div id="getMsg"><!-- display submission msg here --> &nbsp;</div></td></tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

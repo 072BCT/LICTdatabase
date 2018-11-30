@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/gif/jpg" href="~/Content/images/lab-logos.jpg">
+    <script src="~/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="~/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <title>Laboratory for ICT Research and Title</title>
+    @*@Styles.Render("~/Content/css")*@
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <link href="~/Content/cssMain.css" rel="stylesheet" type="text/css" />
+    @*@Scripts.Render("~/bundles/modernizr")*@
+    @Scripts.Render("~/bundles/jquery")
+
+</head>
+<body>
+    <table class="customnav center"  cellpadding="4" >
+        <tr >
+            <td width="10%" align="left"><img src="~/Content/images/lab-logos.jpg" height="125" width="144" /></td>
+            <td width="60%" align="left">
+                <font size="+3" color="#660033" face="Times New Roman"><b>Laboratory for ICT Research and Development</b></font><br />
+                <font size="+2" face="Times New Roman">
+                    <b> Institute of Engineering,Tribhuvan University</b><br />
+                </font> <b><i>http://lict.ioe.edu.np</i></b>
+            </td>
+            <td align="right" width="20%" valign="bottom">
+                <div>
+                    <script>
+                        (function () {
+                            var cx = '003053495883272579089:9pvjtqvgd4c';
+                            var gcse = document.createElement('script');
+                            gcse.type = 'text/javascript';
+                            gcse.async = true;
+                            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                            var s = document.getElementsByTagName('script')[0];
+                            s.parentNode.insertBefore(gcse, s);
+                        })();
+                    </script>
+                    <gcse:search></gcse:search>
+                </div>
+            </td>
+        </tr>
+
+        <tr >
+            <td bgcolor="#FFECF5" colspan="3">
+                <div class="dropdown">
+                    <button class="dropbtn" onClick="location.href='@Url.Action("Index", "Home")'"><img class="menuImg" src="~/Content/images/home.png">&nbsp;Home</button>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn" onClick="location.href='@Url.Action("About", "Home")'"><img class="menuImg" src="~/Content/images/aboutus.png">&nbsp;About Us</button>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Personnel &#9662; </button>
+                    <div class="dropdown-content">
+                        <a href="@Url.Action("UserView","Personnels")">All Members</a>
+                        <a href="javascript:openPage('lictTeam.php')">LICT Research Team</a>
+                        <a href="./profile/cske/" target="_blank">Faculty of Computer & Knowledge Eng.</a>
+                        <a href="#">Associated Faculties</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Research &#9662; </button>
+                    <div class="dropdown-content">
+                        <a href="javascript:openPage('researchPublications.php')">Research Publications</a>
+                        <a href="@Url.Action("UserView","Projects")">Research Projects</a>
+                        <a href="#">Research Interns</a>
+                        <a href="#">Research Scholars</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Collaborations &#9662; </button>
+                    <div class="dropdown-content">
+
+                        <a href="http://ioe.edu.np/linkage/" target="_blank">Universities & Agencies</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn" onClick="openPage('newsNotice.php')">News/Notices</button>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn" onClick="openPage('submitCV.php')">Vacancy </button>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn" onClick="location.href='@Url.Action("Contact", "Home")'"><img class="menuImg" src="~/Content/images/contactus.gif">&nbsp;Contact Us</button>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn" onClick="location.href='@Url.Action("Login", "Account")'"><span class="glyphicon glyphicon-user"></span>&nbsp;Admin</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+  
+    <div class="container body-content" >
+        @RenderBody()
+      
+    </div>
+    @*<footer>*@
+        <table class="footer>" style="width:90%" align="center">
+            <tbody>
+                <tr><td colspan="3"><hr></td></tr>
+                <tr>
+                    <td width="10%"><img src="~/Content/images/ioeLogo.jpg" width="96" height="95" align="left"></td>
+                    <td align="left" valign="middle"> <div align="left"><font size="+2"><b>Institute of Engineering(IOE),Tribhuvan University, Nepal</b></font></div></td>
+                    <td align="right" valign="top">&nbsp; <a href="https://www.facebook.com/LICTLAB/" target="_blank"><img src="~/Content/images/facebook.ico" height="25"></a> &nbsp;<a href="https://twitter.com/lict_ioe" target="_blank"><img src="~/Content/images/twr.ico" height="25"></a>&nbsp; <a href="https://www.youtube.com/playlist?list=PLylVKBSqL0jDt6AXQA1WYfE2QAkaC54D7" target="_blank"><img src="~/Content/images/youTube.ico" height="25"></a></td>
+                </tr>
+
+                <tr height="30" valign="middle">
+                    <td colspan="3" bgcolor="#FFE3D7" align="center" valign="middle">
+                        <div align="center">
+                            © 2016, Laboratory for ICT Research and Development (#lict) <br>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    @*</footer>*@
+
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <!--For Datatables-->
+    <script src="~/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+</body>
+</html>
